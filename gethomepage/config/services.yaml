@@ -1,0 +1,65 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/services
+
+- INFRAESTRUCTURE:
+  - Traefik:
+      icon: traefik
+      href: "https://traefik.myserver.local"
+      description: "HTTP reverse proxy and load balancer."
+      ping: traefik.myserver.local
+      widget:
+        type: traefik
+        url: http://traefik:8080
+
+- WORKSTATIONS:
+  - PLAY:
+    - Plex:
+        icon: plex.png
+        href: "https://plex.myserver.local"
+        description: "Play your movies, music, TV shows and photos."
+        server: my-docker
+        container: plex
+        ping: plex.myserver.local
+        widget:
+          type: plex
+          url: http://plex.myserver.local:32400
+          key: yR4nQ5A2tZy8HW4KpD4h
+          fields: ["streams", "albums", "movies", "tv"]
+  - CNC:
+    - Matik:
+        icon: octoprint.png
+        href: "http://matik.local"
+        description: "Print your 3D models."
+        ping: matik.local
+        widget:
+          type: octoprint
+          url: http://matik.local
+          key: c4-SYMAXnQ1GAUF2GR64gWEHBRhCtuUelh9QEGnn5M0
+
+- IA:
+  - Ollama:
+      icon: ollama.png
+      href: "https://ollama.myserver.local/api/tags"
+      description: "Ollama server"
+      container: ollama
+      ping: ollama.myserver.local
+  - Open-WebUI:
+      icon: sh-open-webui.png
+      href: "https://open-webui.myserver.local"
+      description: "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)"
+      container: open-webui
+      ping: open-webui.myserver.local
+  - Comfy:
+      icon: https://framerusercontent.com/images/7Nhoxwn9eWYrqKjEewfXutR90U.png?scale-down-to=1024
+      href: "https://comfy.myserver.local"
+      description: "Your next masterpiece awaits"
+      container: comfy
+      ping: comfy.myserver.local
+  - n8n:
+      icon: n8n.png
+      href: "https://n8n.myserver.local"
+      description: "Create workflows with ease."
+      server: my-docker
+      container: n8n
+      ping: n8n.myserver.local
