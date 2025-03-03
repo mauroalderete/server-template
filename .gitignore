@@ -6,6 +6,8 @@
 # Ingore certificates
 **/certs/*
 !**/certs/.gitkeep
+!**/certs/myserver.cert
+!**/certs/myserver.key
 
 # Ignore logs
 **/*.log
