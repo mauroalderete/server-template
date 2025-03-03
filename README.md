@@ -86,9 +86,9 @@ For default, the network is called `myserver`. You can change this name in the `
 
 ```yaml
 networks:
-	default:
-		name: myserver
-		external: true
+  default:
+    name: myserver
+    external: true
 ```
 
 If you change the network name, you need to change the network name in the `docker-compose.yaml` file of the services that you want to deploy in the same network.
