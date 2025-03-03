@@ -1,0 +1,15 @@
+http:
+  middlewares:
+    discovery-add-trailing-slash:
+      redirectRegex:
+        # Coincide con cualquier path de la forma /lab/xxx/yyy
+        # que NO termine en barra:
+        regex: "^(.*/lab/[^/]+/[^/]+)$"
+        # Lo redirige a la misma ruta con barra final
+        replacement: "$1/"
+        permanent: true
+    
+    discovery-strip-prefix:
+      stripPrefixRegex:
+        regex:
+          - "^/lab/[^/]+/[^/]+"

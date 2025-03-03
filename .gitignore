@@ -2,3 +2,11 @@
 .[Tt]mp
 .[Tt]emp
 .env
+
+# Ingore certificates
+**/certs/*
+!**/certs/.gitkeep
+
+# Ignore logs
+**/*.log
+**/*.log.*
