@@ -1,4 +1,4 @@
-# starter-server-template <!-- omit in toc -->
+# server-template <!-- omit in toc -->
 
 ***A minimal and flexible template to quickly deploy a simple server using Docker Compose***
 
@@ -86,9 +86,9 @@ For default, the network is called `myserver`. You can change this name in the `
 
 ```yaml
 networks:
-  default:
-	name: myserver
-	external: true
+	default:
+		name: myserver
+		external: true
 ```
 
 If you change the network name, you need to change the network name in the `docker-compose.yaml` file of the services that you want to deploy in the same network.
@@ -198,23 +198,23 @@ First, you need run the service in the same network that the discovery service i
 ```yaml
 networks:
   default:
-	name: myserver
-	external: true
+    name: myserver
+    external: true
 ```
 
 Additionaly, you need add the traefik labels to set up a fixed route to the service. You can use the following example:
 
 ```yaml
 services:
-	plex:
-		labels:
-			- "traefik.enable=true"
-			- "traefik.http.routers.plex.rule=Host(`plex.myserver.local`)"
-			- "traefik.http.routers.plex.entrypoints=websecure"
-			- "traefik.http.routers.plex.tls=true"
-			- "traefik.http.routers.plex-insecure.rule=Host(`plex.myserver.local`)"
-			- "traefik.http.routers.gethplex-insecure.entrypoints=web"
-			- "traefik.http.services.plex.loadbalancer.server.port=32400"
+  plex:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.plex.rule=Host(`plex.myserver.local`)"
+      - "traefik.http.routers.plex.entrypoints=websecure"
+      - "traefik.http.routers.plex.tls=true"
+      - "traefik.http.routers.plex-insecure.rule=Host(`plex.myserver.local`)"
+      - "traefik.http.routers.gethplex-insecure.entrypoints=web"
+      - "traefik.http.services.plex.loadbalancer.server.port=32400"
 ```
 
 In this example, the service is a Plex server. Use a subdomain `plex.myserver.local` to access the service. The `traefik.http.routers.plex.rule` is the hostname that the traefik will use to route the request to the service. The `traefik.http.routers.plex.entrypoints` is the entrypoint that the traefik will use to route the request. The `traefik.http.routers.plex.tls` is the flag that the traefik will use to enable the SSL. The `traefik.http.services.plex.loadbalancer.server.port` is the port that the traefik will use to route the request to the service.
@@ -251,19 +251,19 @@ First, you need run the service in the same network that the discovery service i
 ```yaml
 networks:
   default:
-	name: myserver
-	external: true
+    name: myserver
+    external: true
 ```
 
 Additionaly, you need add the minimals labels for the discovery service of the gethomepage to be able to find the service. You can use the following labels:
 
 ```yaml
 services:
-	<service_name>:
-		labels:
-		- homepage.group=LAB
-		- homepage.name=Ollama
-		- homepage.href=https://myserver.local/lab/<compose_project_name>/<service_name>/
+  <service_name>:
+    labels:
+      - homepage.group=LAB
+      - homepage.name=Ollama
+      - homepage.href=https://myserver.local/lab/<compose_project_name>/<service_name>/
 ```
 
 In this example, the service is a Ollama server. The `homepage.group` is the group that the service will be listed in the landing page. The `homepage.name` is the name of the service that will be listed in the landing page. The `homepage.href` is the url that the service will be accessed in the landing page.
