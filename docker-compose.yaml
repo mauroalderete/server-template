@@ -22,8 +22,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro # Mount the Docker socket so Traefik can listen to events
       - ./traefik:/etc/traefik # Mount the configuration folder
-    networks:
-      - myserver
 
   dockerproxy:
     image: ghcr.io/tecnativa/docker-socket-proxy:latest
@@ -38,8 +36,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     restart: always
-    networks:
-      - myserver
 
   gethomepage:
     image: ghcr.io/gethomepage/homepage:latest
@@ -60,9 +56,8 @@ services:
       - ./gethomepage/images:/app/public/images
       - ./gethomepage/icons:/app/public/icons
     restart: always
-    networks:
-      - myserver
 
 networks:
-  myserver:
+  default:
+    name: myserver
     external: true
