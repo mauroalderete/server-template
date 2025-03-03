@@ -2,7 +2,6 @@ name: Bug Report
 description: Create a report to help us improve
 title: "... is broken"
 labels: ["bug", "lifecycle/needs-triage"]
-type: devops
 projects: ["mauroalderete/20"]
 body:
   - type: markdown
