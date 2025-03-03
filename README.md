@@ -10,9 +10,9 @@
 [![Contributor covenant: 2.1](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](./CODE_OF_CONDUCT.md)
 [![Semantic Versioning: 2.0.0](https://img.shields.io/badge/Semantic--Versioning-2.0.0-a05f79?logo=semantic-release&logoColor=f97ff0)](https://semver.org/)
 
-[![Labeling](https://github.com/mauroalderete/server-tempalte/actions/workflows/labeling.yml/badge.svg)](https://github.com/mauroalderete/server-tempalte/actions/workflows/labeling.yml)
-[![Liberation](https://github.com/mauroalderete/server-tempalte/actions/workflows/liberation.yml/badge.svg)](https://github.com/mauroalderete/server-tempalte/actions/workflows/liberation.yml)
-[![Project Automation](https://github.com/mauroalderete/server-tempalte/actions/workflows/project-automation.yml/badge.svg)](https://github.com/mauroalderete/server-tempalte/actions/workflows/project-automation.yml)
+[![Labeling](https://github.com/mauroalderete/server-template/actions/workflows/labeling.yml/badge.svg)](https://github.com/mauroalderete/server-template/actions/workflows/labeling.yml)
+[![Liberation](https://github.com/mauroalderete/server-template/actions/workflows/liberation.yml/badge.svg)](https://github.com/mauroalderete/server-template/actions/workflows/liberation.yml)
+[![Project Automations](https://github.com/mauroalderete/server-template/actions/workflows/project-automation.yml/badge.svg)](https://github.com/mauroalderete/server-template/actions/workflows/project-automation.yml)
 
 [Bug Report](./issues/new?assignees=&labels=bug%2Clifecycle%2Fneeds-triage&projects=mauroalderete%2F20&template=1-bug-report.yml&title=...+is+broken)
 ⭕
