@@ -1,0 +1,43 @@
+title: MyServer
+startUrl: https://myserver.local/
+background:
+  image: /images/background.jpg
+  opacity: 40
+cardBlur: sm
+favicon: /images/favicon.png
+theme: dark
+color: slate
+headerStyle: clean
+base: https://myserver.local/
+language: es
+target: _target
+hideVersion: true
+showStats: true
+statusStyle: "dot"
+quicklaunch:
+  searchDescriptions: true
+  hideInternetSearch: true
+  showSearchSuggestions: true
+  hideVisitURL: true
+  provider: bing
+
+layout:
+  - INFRAESTRUCTURE:
+      style: row
+      columns: 1
+  - WORKSTATIONS:
+      style: row
+      columns: 2
+      PLAY:
+        style: column
+        rows: 2
+      CNC:
+        style: column
+        rows: 1
+  - IA:
+      style: row
+      columns: 4
+  - LAB:
+      style: row
+      columns: 4
+  

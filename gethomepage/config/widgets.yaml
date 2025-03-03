@@ -10,10 +10,13 @@
 - datetime:
     text_size: xl
     format:
+      dateStyle: short
       timeStyle: short
+      hourCycle: h23
 
 - openmeteo:
     label: Current
-    latitude: 36.66
-    longitude: -117.51
+    latitude: -34.506876
+    longitude: -58.672636
     cache: 5
+  

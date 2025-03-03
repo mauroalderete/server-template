@@ -1,0 +1,39 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/bookmarks
+
+- Developer:
+  - Github:
+    - abbr: GH
+      icon: github.png
+      href: https://github.com/
+  - Docker:
+    - abbr: DK
+      icon: docker.png
+      href: https://hub.docker.com/
+  - Figma:
+    - abbr: FG
+      href: https://figma.com/
+- Cloud IA:
+  - GPT:
+    - abbr: GPT
+      href: https://chatgpt.com/?model=gpt-4o
+  - Copilot:
+    - abbr: CP
+      href: https://www.bing.com/chat?q=Microsoft+Copilot&FORM=hpcodx
+  - Gemini:
+    - abbr: GM
+      href: https://gemini.google.com/app
+
+- Entertainment:
+  - YouTube:
+    - abbr: YT
+      icon: youtube.png
+      href: https://youtube.com/
+  - Netflix:
+    - abbr: NF
+      icon: netflix.png
+      href: https://netflix.com/
+  - Chess:
+    - abbr: CH
+      href: https://chess.com/

@@ -5,65 +5,11 @@ on:
     branches: [main]
     types: [opened, reopened, synchronize, labeled, unlabeled]
 
+permissions:
+  pull-requests: write
+
 jobs:
-  labels-test:
-    name: Assign and test labels from conventional-commits
-    if: github.event.pull_request.merged == false
-    runs-on: ubuntu-latest
-    permissions: write-all
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.ref }}
-
-      - name: Assign labels
-        id: action-assign-labels
-        uses: mauroalderete/action-assign-labels@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          conventional-commits: |
-            conventional-commits:
-              - type: 'fix'
-                nouns: ['FIX', 'Fix', 'fix', 'FIXED', 'Fixed', 'fixed']
-                labels: ['bug']
-              - type: 'feature'
-                nouns: ['FEATURE', 'Feature', 'feature', 'FEAT', 'Feat', 'feat']
-                labels: ['enhancement']
-              - type: 'breaking_change'
-                nouns: ['BREAKING CHANGE', 'BREAKING', 'MAJOR']
-                labels: ['BREAKING CHANGE']
-              - type: 'refactor'
-                nouns: ['refac', 'refact', 'refactor', 'REFAC', 'REFACT', 'REFACTOR', 'refacs', 'refacts', 'refactors', 'REFACS', 'REFACTS', 'REFACTORS']
-                labels: ['bug']
-              - type: 'dependencies'
-                nouns: ['dependencies','dependencie','depends','depend','deps','dep', 'chore']
-                labels: ['dependencies','bug']
-              - type: 'documentation'
-                nouns: ['doc','docs','docu','document','documentation']
-                labels: ['documentation','bug']
-              - type: 'build'
-                nouns: ['build','rebuild']
-                labels: ['build','bug']
-              - type: 'config'
-                nouns: ['config', 'conf', 'cofiguration', 'configure']
-                labels: ['config','bug']
-              - type: 'ci'
-                nouns: ['ci', 'CI']
-                labels: ['ci','bug']
-              - type: 'test'
-                nouns: ['test','tests','testing']
-                labels: ['test','bug']
-              - type: 'wip'
-                nouns: ['wip','WIP','Wip']
-                labels: ['wip','bug']
-
-      - name: Verify labels
-        id: action-verify-labels
-        uses: mauroalderete/action-verify-labels@v1
-        with:
-          none: question, wontfix, invalid, help wanted, good first issue, duplicate
-          some: BREAKING CHANGE, enhancement, bug, documentation, dependencies, build, config
-          request-review: true
-          request-review-header: "**:bookmark: verify-labels-action**"
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+  call-labeling-workflow:
+    uses: mauroalderete/workflows/.github/workflows/labeling.yml@v0
+    secrets:
+      github-token: ${{ secrets.GH_PROJECT_AUTOMATION }}

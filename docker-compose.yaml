@@ -1,16 +1,27 @@
 services:
-  nginx:
-    image: nginx:latest
-    container_name: reverse_proxy
+  traefik:
+    image: traefik:v3.3.3
+    container_name: traefik
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.myserver.local`)"
+      - "traefik.http.routers.traefik.entrypoints=websecure"
+      - "traefik.http.routers.traefik.tls=true"
+      - "traefik.http.routers.traefik-insecure.rule=Host(`traefik.myserver.local`)"
+      - "traefik.http.routers.traefik-insecure.entrypoints=web"
+      - "traefik.http.services.traefik.loadbalancer.myserver.port=8080"
+      - "traefik.http.middlewares.testheader.headers.accesscontrolallowmethods=GET,OPTIONS,PUT"
+      - "traefik.http.middlewares.testheader.headers.accesscontrolallowheaders=*"
+      - "traefik.http.middlewares.testheader.headers.accesscontrolalloworiginlist=https://myserver.local,http://myserver.local"
+      - "traefik.http.middlewares.testheader.headers.accesscontrolmaxage=100"
+      - "traefik.http.middlewares.testheader.headers.addvaryheader=true"
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx/conf.d:/etc/nginx/conf.d:ro
-    restart: unless-stopped
-    networks:
-      - server
+      - /var/run/docker.sock:/var/run/docker.sock:ro # Mount the Docker socket so Traefik can listen to events
+      - ./traefik:/etc/traefik # Mount the configuration folder
 
   dockerproxy:
     image: ghcr.io/tecnativa/docker-socket-proxy:latest
@@ -24,33 +35,29 @@ services:
       - 127.0.0.1:2375:2375
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    restart: unless-stopped
-    networks:
-      - server
+    restart: always
 
-  homepage:
+  gethomepage:
     image: ghcr.io/gethomepage/homepage:latest
-    container_name: homepage
+    container_name: gethomepage
     environment:
-      PUID: 1002
-      PGID: 1002
-    ports:
-      - "3000:3000"
+      PUID: $PUID
+      PGID: $PGID
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.gethomepage.rule=Host(`myserver.local`)"
+      - "traefik.http.routers.gethomepage.entrypoints=websecure"
+      - "traefik.http.routers.gethomepage.tls=true"
+      - "traefik.http.routers.gethomepage-insecure.rule=Host(`myserver.local`)"
+      - "traefik.http.routers.gethomepage-insecure.entrypoints=web"
+      - "traefik.http.services.gethomepage.loadbalancer.server.port=3000"
     volumes:
-      - ./homepage/config/bookmarks.yaml:/app/config/bookmarks.yaml
-      - ./homepage/config/custom.css:/app/config/custom.css
-      - ./homepage/config/custom.js:/app/config/custom.js
-      - ./homepage/config/docker.yaml:/app/config/docker.yaml
-      - ./homepage/config/kubernetes.yaml:/app/config/kubernetes.yaml
-      - ./homepage/config/services.yaml:/app/config/services.yaml
-      - ./homepage/config/settings.yaml:/app/config/settings.yaml
-      - ./homepage/config/widgets.yaml:/app/config/widgets.yaml
-      - ./homepage/images:/app/public/images
-    restart: unless-stopped
-    networks:
-      - server
+      - ./gethomepage/config:/app/config
+      - ./gethomepage/images:/app/public/images
+      - ./gethomepage/icons:/app/public/icons
+    restart: always
 
 networks:
-  server:
-    # Define network for services
+  default:
+    name: myserver
     external: true

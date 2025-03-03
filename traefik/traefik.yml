@@ -1,0 +1,42 @@
+log:
+  level: DEBUG
+
+api:
+  insecure: true
+  dashboard: true
+  debug: true
+  disableDashboardAd: true
+
+entryPoints:
+  web:
+    address: ":80"
+    asDefault: true
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+          permanent: true
+  websecure:
+    address: ":443"
+    asDefault: true
+    http:
+      middlewares:
+        - discovery-add-trailing-slash@file
+        - discovery-strip-prefix@file
+      tls:
+        domains:
+          - main: "myserver.local"
+            sans:
+              - "*.myserver.local"
+
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    network: myserver
+    exposedByDefault: true
+    defaultRule: "Host(`myserver.local`) && PathPrefix(`/lab/{{ index .Labels \"com.docker.compose.project\" }}/{{ index .Labels \"com.docker.compose.service\" }}`)"
+    
+  file:
+    directory: "/etc/traefik/dynamic"
+    watch: true

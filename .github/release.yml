@@ -12,9 +12,6 @@ changelog:
     - title: '📖 Changes to Documentation'
       labels:
         - "documentation"
-    - title: '🛠️ Changes in Dependencies'
-      labels:
-        - "dependencies"
-    - title: '📎 Other Changes'
+    - title: '👾 Other Changes'
       labels:
         - "*"
