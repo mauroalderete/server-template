@@ -1,0 +1,27 @@
+name: Feature Request
+description: Suggest an idea for this project
+title: "As a [type of user], I want [a goal] so that [benefit]"
+labels: ["enhancement", "lifecycle/needs-triage"]
+type: devops
+projects: ["mauroalderete/20"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this feature request!
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the feature
+      description: What would you like to see added?
+      placeholder: I would like to see...
+    validations:
+      required: true
+  - type: textarea
+    id: aditional
+    attributes:
+      label: Additional context
+      description: Add any other context or screenshots about the feature request here.
+      placeholder: I'm using...
+    validations:
+      required: false

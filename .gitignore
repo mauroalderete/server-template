@@ -1,2 +1,4 @@
-# add files, folders and others patterns to ignore by git
-# You can use git default to specific stacks offered by GitHub, too.
+# Ignore Visual Studio temporary files
+.[Tt]mp
+.[Tt]emp
+.env

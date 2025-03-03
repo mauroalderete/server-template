@@ -1,0 +1,19 @@
+name: Help Wanted
+description: Request help or suggest a topic to discuss
+title: "I need help with..."
+labels: ["help wanted", "lifecycle/needs-triage"]
+type: devops
+projects: ["mauroalderete/20"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this help wanted issue!
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the help needed
+      description: What do you need help with?
+      placeholder: I'm stuck with...
+    validations:
+      required: true

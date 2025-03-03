@@ -1,0 +1,43 @@
+name: Bug Report
+description: Create a report to help us improve
+title: "... is broken"
+labels: ["bug", "lifecycle/needs-triage"]
+type: devops
+projects: ["mauroalderete/20"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+      placeholder: I'm always frustrated when...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What you expected to happen.
+      placeholder: I would like to see...
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What actually happened.
+      placeholder: Instead I saw...
+    validations:
+      required: true
+  - type: textarea
+    id: aditional
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
+      placeholder: I'm using...
+    validations:
+      required: false
