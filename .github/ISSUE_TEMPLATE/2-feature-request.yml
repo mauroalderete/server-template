@@ -2,7 +2,6 @@ name: Feature Request
 description: Suggest an idea for this project
 title: "As a [type of user], I want [a goal] so that [benefit]"
 labels: ["enhancement", "lifecycle/needs-triage"]
-type: devops
 projects: ["mauroalderete/20"]
 body:
   - type: markdown
