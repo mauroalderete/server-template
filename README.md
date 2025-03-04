@@ -2,6 +2,12 @@
 
 ***A minimal and flexible template to quickly deploy a simple server using Docker Compose***
 
+> [!IMPORTANT]
+> This repository is not maintained any more. The projec was migrated to [novafuria/server-template](https://github.com/novafuria/server-template).
+> Probably, you want to visit the new repository to get the latest updates and improvements.
+>
+> This repository will be archived soon. Please any question or issue, open a new issue in the new repository.
+
 <div align="center">
 
 &nbsp;
